@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa 2</title>
+</head>
+
+<body>
+    <script>
+        let nome_do_usuario, senha;
+
+        do {
+            nome_do_usuario = prompt("Digite seu usuário:");
+            senha = prompt("Digite sua senha:");
+
+            if (nome_do_usuario === senha) {
+                alert("Os campos Senha e Usuário se coincidem. Por favor, tente novamente.");
+            }
+        } while (nome_do_usuario === senha);
+
+        alert("O usuário foi cadastrado com sucesso");
+    </script>
+
+</body>
+
+</html>

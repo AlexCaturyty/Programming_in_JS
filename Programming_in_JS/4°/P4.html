@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa 4</title>
+</head>
+
+<body>
+    <script>
+        let populacaoA = 80000;
+        let taxaCrescimentoA = 0.03;
+        let populacaoB = 200000;
+        let taxaCrescimentoB = 0.015;
+        let anos = 0;
+
+        while (populacaoA < populacaoB) {
+            populacaoA += populacaoA * taxaCrescimentoA;
+            populacaoB += populacaoB * taxaCrescimentoB;
+            anos++;
+        }
+
+        alert("Serão necessários " + anos + " anos para que a população do país A ultrapasse ou iguale a população do país B.");
+
+    </script>
+</body>
+
+</html>

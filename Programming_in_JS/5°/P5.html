@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Programa 5</title>
+</head>
+
+<body>
+    <script>
+        let populacaoA, taxaCrescimentoA, populacaoB, taxaCrescimentoB;
+        let anos;
+
+        do {
+            populacaoA = parseInt(prompt("Digite a população do país A:"));
+            taxaCrescimentoA = parseFloat(prompt("Digite a taxa de crescimento anual da população do país A (em decimal):"));
+            populacaoB = parseInt(prompt("Digite a população do país B:"));
+            taxaCrescimentoB = parseFloat(prompt("Digite a taxa de crescimento anual da população do país B (em decimal):"));
+
+            if (populacaoA <= 0 || taxaCrescimentoA <= 0 || populacaoB <= 0 || taxaCrescimentoB <= 0) {
+                alert("Os valores informados precisam ser maiores que zeros. Por favor, tente novamente.");
+            }
+            else {
+                anos = 0;
+                while (populacaoA < populacaoB) {
+                    populacaoA += populacaoA * taxaCrescimentoA;
+                    populacaoB += populacaoB * taxaCrescimentoB;
+                    anos++;
+                }
+                alert("Vão precisar de " + anos + " anos para a população do país A ultrapassasr ou igualar a população do país B.");
+            }
+        } while (populacaoA <= 0 || taxaCrescimentoA <= 0 || populacaoB <= 0 || taxaCrescimentoB <= 0);
+    </script>
+</body>
+
+</html>

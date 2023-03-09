@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa 1</title>
+</head>
+
+<body>
+    <script>
+        let nota;
+
+        do {
+            nota = parseFloat(prompt("Digite uma nota de 0 a 10:"));
+
+            if (nota < 0) {
+                alert("A nota está menor que o desejado. Por favor, digite um valor entre 0 e 10.");
+
+            } else if (nota > 10) {
+                alert("A nota está maior que o desejado. Por favor, digite um valor entre 0 e 10.");
+            }
+        } while (nota < 0 || nota > 10);
+
+        alert("A nota digitada foi " + nota);
+    </script>
+</body>
+
+</html>
