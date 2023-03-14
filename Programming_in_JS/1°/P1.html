@@ -6,24 +6,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programa 1</title>
+</head> 
+    <style>
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-
 <body>
+    <form>
+        <label for="nota">Digite uma nota de 0 a 10:</label>
+        <input type="number" id="nota" name="nota" min="0" max="10" required>
+
+        <input type="submit" value="Enviar">
+    </form>
+
     <script>
-        let nota;
+        let form = document.querySelector('form');
+        let input = form.querySelector('input[type="number"]');
 
-        do {
-            nota = parseFloat(prompt("Digite uma nota de 0 a 10:"));
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-            if (nota < 0) {
-                alert("A nota está menor que o desejado. Por favor, digite um valor entre 0 e 10.");
+    <script>
+        let form = document.querySelector('form');
+         input = form.querySelector('input[type="number"]');
 
-            } else if (nota > 10) {
-                alert("A nota está maior que o desejado. Por favor, digite um valor entre 0 e 10.");
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let nota = parseFloat(input.value);
+
+            if (nota < 0 || nota > 10 || isNaN(nota)) {
+                alert("A nota digitada não é válida. Por favor, digite um valor entre 0 e 10.");
+                input.focus();
+                return;
             }
-        } while (nota < 0 || nota > 10);
 
-        alert("A nota digitada foi " + nota);
+            alert("A nota digitada foi " + nota);
+        });
     </script>
 </body>
 
