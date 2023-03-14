@@ -6,22 +6,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programa 2</title>
+    <style>
+    body {
+            font-family: Arial;
+            background-color: #000000;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        label input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0069d9;
+        }
+        .message {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .erro {
+            color: red;
+        }
+        </style>
 </head>
 
 <body>
+    <div class="container">
+        <h1>Login</h1>
+        <form>
+            <label>
+                Usuário:
+                <input type="text" id="username" required>
+            </label>
+            <label>
+                Senha:
+                <input type="password" id="password" required>
+            </label>
+            <button type="submit">Enviar</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+    
     <script>
-        let nome_do_usuario, senha;
+       let form = document.querySelector('form');
+        let message = document.querySelector('#message');
 
-        do {
-            nome_do_usuario = prompt("Digite seu usuário:");
-            senha = prompt("Digite sua senha:");
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let nome = document.querySelector('#username').value;
+            let senha = document.querySelector('#password').value;
 
-            if (nome_do_usuario === senha) {
-                alert("Os campos Senha e Usuário se coincidem. Por favor, tente novamente.");
+            if (nome === senha) {
+                message.classList.add('erro');
+                message.textContent = 'Os campos Senha e Usuário estão iguais. Por favor, tente novamente.';
+            } else {
+                message.classList.remove('erro');
+                message.textContent = 'Cadastrado efetuado com sucesso.';
             }
-        } while (nome_do_usuario === senha);
-
-        alert("O usuário foi cadastrado com sucesso");
+        });
     </script>
 
 </body>
