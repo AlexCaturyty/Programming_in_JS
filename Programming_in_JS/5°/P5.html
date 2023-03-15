@@ -6,32 +6,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Programa 5</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            background-color: bisque;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #15554f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+    	body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+		h1 {
+			margin-top: 50px;
+		}
+	</style>
 </head>
-
 <body>
+	<h1>População dos países A e B</h1>
+	<form>
+		<label>População do país A:</label>
+		<input type="number" id="popdeA">
+		<label>Taxa de crescimento do país A:</label>
+		<input type="number" id="taxadeA">
+		<label>População do país B:</label>
+		<input type="number" id="popdeB">
+		<label>Taxa de crescimento do país B:</label>
+		<input type="number" id="taxadeB">
+		<button type="button" onclick="calcular()">Calcular</button>
+	</form>
+    <p id="resultado"></p>
+
     <script>
-        let populacaoA, taxaCrescimentoA, populacaoB, taxaCrescimentoB;
-        let anos;
-
-        do {
-            populacaoA = parseInt(prompt("Digite a população do país A:"));
-            taxaCrescimentoA = parseFloat(prompt("Digite a taxa de crescimento anual da população do país A (em decimal):"));
-            populacaoB = parseInt(prompt("Digite a população do país B:"));
-            taxaCrescimentoB = parseFloat(prompt("Digite a taxa de crescimento anual da população do país B (em decimal):"));
-
-            if (populacaoA <= 0 || taxaCrescimentoA <= 0 || populacaoB <= 0 || taxaCrescimentoB <= 0) {
-                alert("Os valores informados precisam ser maiores que zeros. Por favor, tente novamente.");
+        function calcular() {
+            let populacaoA = parseInt(document.getElementById("popdeA").value);
+            let taxaCrescimentoA = parseFloat(document.getElementById("taxadeA").value) / 100;
+            let populacaoB = parseInt(document.getElementById("popdeB").value);
+            let taxaCrescimentoB = parseFloat(document.getElementById("taxadeB").value) / 100;
+            let anos = 0;
+    
+            while (populacaoA < populacaoB) {
+                populacaoA += populacaoA * taxaCrescimentoA;
+                populacaoB += populacaoB * taxaCrescimentoB;
+                anos++;
             }
-            else {
-                anos = 0;
-                while (populacaoA < populacaoB) {
-                    populacaoA += populacaoA * taxaCrescimentoA;
-                    populacaoB += populacaoB * taxaCrescimentoB;
-                    anos++;
-                }
-                alert("Vão precisar de " + anos + " anos para a população do país A ultrapassasr ou igualar a população do país B.");
-            }
-        } while (populacaoA <= 0 || taxaCrescimentoA <= 0 || populacaoB <= 0 || taxaCrescimentoB <= 0);
+    
+            let resultado = document.getElementById("resultado");
+            resultado.textContent = "Serão necessários " + anos + " anos para que a população do país A ultrapasse ou iguale a população do país B.";
+        }
     </script>
 </body>
 
