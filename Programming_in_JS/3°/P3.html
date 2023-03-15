@@ -6,35 +6,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programa 3</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="range"],
+        input[type="email"],
+        input[type="password"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 3px;
+            background-color: #9f9f9f;
+            font-size: 16px;
+            color: #000000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        button[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            border-radius: 3px;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0062cc;
+        }
+    </style>
 </head>
 
 <body>
-    <script>
-        let nome, idade, salario, sexo, estadoCivil;
+    <form>
+            <label>
+                Nome:
+                <input type="text" id="nome" required>
+            </label>
+            <label>
+                Idade:
+                <input type="number" id="idade" min="0" max="150" required>
+            </label>
+            <label>
+                Salário:
+                <input type="number" id="salario" step="0.01" min="0" required>
+            </label>
+            <label>
+                Sexo:
+                <label for="sexo-f">Feminino</label>
+                <input type="radio" id="sexo-f" name="sexo" value="f" required>
 
-        do {
-            nome = prompt("Digite seu nome:");
-        } while (nome.length <= 3);
-
-        do {
-            idade = parseInt(prompt("Digite sua idade:"));
-        } while (idade < 0 || idade > 150);
-
-        do {
-            salario = parseFloat(prompt("Digite seu salário:"));
-            
-        } while (salario <= 0);
-
-        do {
-            sexo = prompt("Digite seu sexo (f ou m):").toLowerCase();
-        } while (sexo !== 'f' && sexo !== 'm');
-
-        do {
-            estadoCivil = prompt("Digite seu estado civil (s, c, v ou d):").toLowerCase();
-        } while (estadoCivil !== 's' && estadoCivil !== 'c' && estadoCivil !== 'v' && estadoCivil !== 'd');
-
-        alert("Informações válidas. Nome: " + nome + ", idade: " + idade + ", salário: " + salario + ", sexo: " + sexo + ", estado civil: " + estadoCivil);
-    </script>
+                <label for="sexo-m">Masculino</label>
+                <input type="radio" id="sexo-m" name="sexo" value="m" required>
+            </label>
+            <label>
+                Estado Civil:
+                <select id="estado-civil" required>
+                    <option value="">Selecione</option>
+                    <option value="s">Solteiro(a)</option>
+                    <option value="c">Casado(a)</option>
+                    <option value="v">Viúvo(a)</option>
+                    <option value="d">Divorciado(a)</option>
+                </select>
+            </label>
+            <button type="submit">Enviar</button>
+        </form>
+        <script>
+            const form = document.querySelector('form');
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const nome = document.querySelector('#nome').value;
+                const idade = document.querySelector('#idade').value;
+                const salario = document.querySelector('#salario').value;
+                const sexo = document.querySelector('input[name="sexo"]:checked').value;
+                const estadoCivil = document.querySelector('#estado-civil').value;
+                alert("Informações válidas. Nome: " + nome + ", idade: " + idade + ", salário: " + salario + ", sexo: " + sexo + ", estado civil: " + estadoCivil);
+            });
+        </script>
 </body>
 
 </html>
