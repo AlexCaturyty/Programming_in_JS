@@ -7,15 +7,38 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-        let numero1, numero2
+     <h1>Intervalo de Números </h1>
+    <form>
+        <label for="numero1">Digite o primeiro número:</label>
+        <input type="number" id="numero1" name="numero1" required>
 
-        numero1 = parseInt(prompt("Digite o primeiro número:"));
-        numero2 = parseInt(prompt("Digite o segundo número"));
-        for (let i = numero1; i <= numero2; i++) {
-            console.log(i);
-            
-        }
+        <label for="numero2">Digite o segundo número:</label>
+        <input type="number" id="numero2" name="numero2" required>
+
+        <button type="submit">Gerar números</button>
+    </form>
+
+    <div id="numgerados"></div>
+
+    <script>
+        var form = document.querySelector("form");
+        var numerosGerados = document.getElementById("numgerados");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            numerosGerados.innerHTML = "";
+
+            var numero1 = parseInt(document.getElementById("numero1").value);
+            var numero2 = parseInt(document.getElementById("numero2").value);
+
+            for (let i = numero1; i <= numero2; i++) {
+                var lista = document.createElement("li");
+                lista.innerText = i;
+                numerosGerados.appendChild(lista);
+            }
+        });
+
+
     </script>
 </body>
 </html>
