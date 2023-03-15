@@ -6,22 +6,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
+    <h1>Encontrar o maior número</h1>
+    <form>
+        <label>Digite o 1º número:</label>
+        <input type="number" id="numero1" required>
+        
+        <label>Digite o 2º número:</label>
+        <input type="number" id="numero2" required>
+
+        <label>Digite o 3º número:</label>
+        <input type="number" id="numero3" required>
+
+        <label>Digite o 4º número:</label>
+        <input type="number" id="numero4" required>
+
+        <label>Digite o 5º número:</label>
+        <input type="number" id="numero5" required>
+
+        <button type="button" onclick="encontrarNumeroMaior()">Encontrar o maior número</button>
+    </form>
+
+    <div class="resultado" id="resultado"></div>
+
     <script>
-        let maior = null;
+        function encontrarNumeroMaior() {
+            let maior = null;
 
-        for (let i = 0; i < 5; i++) {
-            let numero = parseFloat(prompt("Digite o " + (i + 1) + "º número:"));
+            let numero1 = parseFloat(document.getElementById("numero1").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            let numero3 = parseFloat(document.getElementById("numero3").value);
+            let numero4 = parseFloat(document.getElementById("numero4").value);
+            let numero5 = parseFloat(document.getElementById("numero5").value);
 
-            if (maior === null || numero > maior) {
-                maior = numero;
+            let numeros = [numero1, numero2, numero3, numero4, numero5];
+
+            for (let i = 0; i < numeros.length; i++) {
+                if (maior === null || numeros[i] > maior) {
+                    maior = numeros[i];
+                }
             }
-        }
 
-        console.log("O maior número é: " + maior);
+            document.getElementById("resultado").innerHTML = "O maior número é: " + maior;
+        }
     </script>
+</head>
+
+
 </body>
 
 </html>
